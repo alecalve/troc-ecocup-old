@@ -2,8 +2,12 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>IRSN</title>
+    <title>Troc'Écocup</title>
     <link href="view/css/bootstrap.css" rel="stylesheet" type="text/css">
 </head>
 <body>
     <div class="container">
+        <div class="page-header">
+            <h1>Bienvenue sur Troc'Écocup <i>v2</i></h1>
+            <p>Quoi de neuf <?php echo $_SESSION['user']; ?> ?</p>
+        </div>
