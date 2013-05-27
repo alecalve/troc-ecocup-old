@@ -1,14 +1,12 @@
 <?php include(dirname(__FILE__).'/head.php'); 
 
 use App\Core\GenHtml as GenHtml;
-use App\Core\TrocManager as TrocManager;
-
-$TManager = new TrocManager();
-
-$offers = $TManager->getOffersByLogin($_SESSION['user']);
 ?>
         <div class="row">
-          <div class="well">
+          <div class="span10 offset1">
+            <?php echo GenHtml::genResumeOffers($_SESSION['user']); ?>
+          </div>
+          <div class="well span12">
             <h3 class="text-left">Si toi aussi …</h3>
               <div class="text-center">
                 <p>Tu as une (ou plusieurs écocups) dont tu veux te débarasser</p>

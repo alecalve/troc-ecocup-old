@@ -7,7 +7,7 @@ use App\Core\TrocManager as TrocManager;
 $EManager = new EcocupManager();
 $TManager = new TrocManager();
 ?>
-<h3>Résultats</h3>
+<h3>Résultats <small><a href="index.php">retour</a></small></h3>
 <?php
 $matches = $TManager->getMatchingOffers($_POST['input'], $_POST['output']);
 
@@ -36,7 +36,7 @@ if (!empty($matches)) {
   
   ?>
         <div class="row">
-            <div class="hero-unit">
+            <div class="alert alert-error">
                 <h5>Pas d'offres correspondantes pour toi</h5>
                 <p>Rassures-toi, tes offres sont gardées en mémoire et si quelqu'un pose une offre correspondante, il/elle te contactera.</p>
             </div>
