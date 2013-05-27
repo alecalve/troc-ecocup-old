@@ -1,6 +1,6 @@
 <?php
 
-$_CONF['url'] = "http://localhost/troc/";
+$_CONF['url'] = "http://localhost:8000";
 $_CONF['cas_url'] = "https://cas.utc.fr/cas/";
 
 $_CONF['db_host'] = "localhost";
