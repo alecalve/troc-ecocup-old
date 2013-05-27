@@ -1,22 +1,40 @@
 <?php 
 include_once(dirname(__FILE__).'/head.php');
 
-use App\Core\Ecocup as Ecocup;
-use App\Core\Troc as Troc;
+use App\Core\EcocupManager as EcocupManager;
+use App\Core\TrocManager as TrocManager;
 
+$EManager = new EcocupManager();
+$TManager = new TrocManager();
 ?>
 <h3>Résultats</h3>
 <?php
-$match = Troc::getMatchingOffers($_POST['dons'], $_POST['desirs']);
+$matches = $TManager->getMatchingOffers($_POST['input'], $_POST['output']);
 
-if (!empty($match)) {
-    echo "      <h2>Tadam !</h2>";
-    echo "<ul>";
-    foreach($match as $offer) {
-        echo "<li>".$offer["login"]." propose l'écocup ".Ecocup::getEcocupByID($offer["desir"])." et recherche l'écocup ".Ecocup::getEcocupByID($offer["don"]).". Envoie lui un mail à son adresse etu pour conclure l'échange.</li>";
+if (!empty($matches)) {
+    $matchID = array();
+    foreach($matches as $match) {
+        $matchID[] = $match["desir"];
     }
-    echo "</ul>";
-} else { ?>
+
+    foreach($matches as $offer) {
+        $TManager->deleteOffer($offer["desir"], $offer["don"], $offer["login"]);
+        $mail = $offer["login"]."@etu.utc.fr";
+        echo "<div class='alert alert-success'>".$offer["login"]." donne une ".$EManager->getEcocupByID($offer["desir"])." et cherche une ".
+        $EManager->getEcocupByID($offer["don"]).".<br>Envoie-lui un mail à son adresse etu (<a href='mailto:".$mail."'>".$mail."</a>) pour conclure l'échange.</div>";
+    }
+    
+    foreach(array_diff($_POST['output'], $matchID) as $toInsert) {
+        $TManager->insertOffer($_POST['input'], $toInsert, $_SESSION['user']);
+    }
+    
+} else { 
+
+    foreach($_POST['output'] as $toInsert) {
+        $TManager->insertOffer($_POST['input'], $toInsert, $_SESSION['user']);
+    }
+  
+  ?>
         <div class="row">
             <div class="hero-unit">
                 <h5>Pas d'offres correspondantes pour toi</h5>
