@@ -2,7 +2,6 @@
 -- Base de données: `troc`
 --
 
--- --------------------------------------------------------
 
 --
 -- Structure de la table `assos`
@@ -25,17 +24,6 @@ CREATE TABLE IF NOT EXISTS `ecocups` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=24 ;
 
---
--- Structure de la table `etus`
---
-
-CREATE TABLE IF NOT EXISTS `etus` (
-  `login` varchar(8) NOT NULL,
-  `mail` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`login`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- --------------------------------------------------------
 
 --
 -- Structure de la table `propositions`
@@ -52,7 +40,6 @@ CREATE TABLE IF NOT EXISTS `propositions` (
   KEY `ecocup_cherche_id` (`ecocup_cherche_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- --------------------------------------------------------
 
 --
 -- Structure de la table `semestres`
