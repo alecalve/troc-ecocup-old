@@ -27,10 +27,10 @@ class Cas
     {
         if (isset($_GET['ticket'])) {
             $response = file_get_contents($this->casUrl.'serviceValidate?service='.$this->url.'&ticket='.$_GET['ticket']);
-            if (empty($response)) return "pas de retour";
+            if (empty($response)) return -1;
             $username = Xml::parseCasReturn($response);
-            if (empty($username)) return "username vide";
-            if ($username == -1) return "username invalide";
+            if (empty($username)) return -1;
+            if ($username == -1) return -1;
             return $username;
         } else {
             return -1;
