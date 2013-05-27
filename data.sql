@@ -1,3 +1,6 @@
+-- Contenu de la table `assos`
+--
+
 INSERT INTO `assos` (`nom`) VALUES
 ('Contact au Mali'),
 ('Escom'),
@@ -11,6 +14,10 @@ INSERT INTO `assos` (`nom`) VALUES
 ('Skiutc'),
 ('UTCéenne'),
 ('WEI');
+
+--
+-- Contenu de la table `ecocups`
+--
 
 INSERT INTO `ecocups` (`id`, `asso`, `semestre`, `commentaire`) VALUES
 (3, 'Picasso', 'A10', ''),
@@ -32,7 +39,12 @@ INSERT INTO `ecocups` (`id`, `asso`, `semestre`, `commentaire`) VALUES
 (19, 'Picasso', 'A12', ''),
 (20, 'Picasso', 'P13', ''),
 (21, 'PAE', 'A12', ''),
-(22, 'Profit''rôles', 'A12', '');
+(22, 'Profit''rôles', 'A12', ''),
+(23, 'PMDE', 'P13', '');
+
+--
+-- Contenu de la table `semestres`
+--
 
 INSERT INTO `semestres` (`semestre`) VALUES
 ('A10'),
